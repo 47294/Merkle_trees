@@ -1,36 +1,26 @@
+import java.util.ArrayList;
 
 public class Main_tree {
 	
-	class Node {
-		private Node leftNode;
-		private Node rightNode;
-		private String hash;
+	public static Node generateTree(ArrayList<String> dataBlocks) {
+		ArrayList<Node> childNodes = new ArrayList<>();
 		
-		public Node(Node left, Node right, String hash) {
-			this.leftNode = left;
-			this.rightNode = right;
-			this.hash = hash;
+		for (String message: dataBlocks) {
+			childNodes.add(new Node(null, null, Hash_algorithm.generateHash(message)));
 		}
+		return buildTree(childNodes);
+	}
+	
+	private static Node buildTree(ArrayList<Node> children) {
+		ArrayList<Node> parentsArrayList = new ArrayList<>();
 		
-		public Node getLeft() {
-			return leftNode;
-		}
-		
-		public void setLeft(Node left) {
-			this.leftNode = left;
-		}
-		
-		public Node getRight() {
-			return rightNode;
-		}
-		public void setRight(Node right) {
-			this.rightNode = right;
-		}
-		public String getHash() {
-			return hash;
-		}
-		public void setHash(String hash) {
-			this.hash = hash;
+		while (children.size() != 1) {
+			int index = 0, lenght = children.size();
+			while (index < lenght) {
+				Node leftChildNode = children.get(index);
+				Node rightNodeChildNode = null;
+			}
 		}
 	}
+
 }
