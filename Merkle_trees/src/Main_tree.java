@@ -12,15 +12,29 @@ public class Main_tree {
 	}
 	
 	private static Node buildTree(ArrayList<Node> children) {
-		ArrayList<Node> parentsArrayList = new ArrayList<>();
+		ArrayList<Node> parents = new ArrayList<>();
 		
 		while (children.size() != 1) {
 			int index = 0, lenght = children.size();
 			while (index < lenght) {
-				Node leftChildNode = children.get(index);
-				Node rightNodeChildNode = null;
+				Node leftChild = children.get(index);
+				Node rightChild = null;
+				
+				if ((index + 1) < lenght) {
+					rightChild = children.get(index + 1);
+				}
+				else {
+					rightChild = new Node(null, null, leftChild.getHash());
+				}
+				
+				String parentHash = Hash_algorithm.generateHash(leftChild.getHash() + rightChild.getHash());
+				parents.add(new Node(leftChild, rightChild, parentHash));
+				index +=2;
 			}
+			children = parents;
+			parents = new ArrayList<Node>();
 		}
+		return children.get(0);
 	}
 
 }
