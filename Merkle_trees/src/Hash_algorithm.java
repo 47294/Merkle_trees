@@ -3,8 +3,14 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 public class Hash_algorithm {
-	public static String generateHash(String origString) throws NoSuchAlgorithmException {
-		MessageDigest digest = MessageDigest.getInstance("SHA-256");
+	public static String generateHash(String origString) {
+		MessageDigest digest = null;
+		try {
+			digest = MessageDigest.getInstance("SHA-256");
+		} catch (NoSuchAlgorithmException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		byte[] encodedHash = digest.digest(origString.getBytes(StandardCharsets.UTF_8));
 		// Не известно, понадобиться ли хекс. но добавим:
 		return bytesToHex(encodedHash);

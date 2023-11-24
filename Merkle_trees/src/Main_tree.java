@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 
+
 public class Main_tree {
 	
 	public static Node generateTree(ArrayList<String> dataBlocks) {
@@ -29,12 +30,18 @@ public class Main_tree {
 				
 				String parentHash = Hash_algorithm.generateHash(leftChild.getHash() + rightChild.getHash());
 				parents.add(new Node(leftChild, rightChild, parentHash));
-				index +=2;
+				index += 2;
 			}
 			children = parents;
 			parents = new ArrayList<Node>();
 		}
 		return children.get(0);
 	}
-
+	public static void printfinalhash(Node root) {
+		if (root == null) {
+			return;
+		}
+		System.out.println("Final hash = " + root.getHash());
+	}
+	
 }
