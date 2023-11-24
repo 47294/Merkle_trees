@@ -9,6 +9,7 @@ public class test_tree {
 		dataBlockStrings.add("East");
 		dataBlockStrings.add("West");
 		dataBlockStrings.add("North");
+		//dataBlockStrings.add("South-East");
 		Node root = Main_tree.generateTree(dataBlockStrings);
 		Main_tree.printfinalhash(root);
 	}

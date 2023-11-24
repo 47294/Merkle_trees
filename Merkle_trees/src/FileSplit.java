@@ -3,10 +3,19 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.Scanner;
+
+import jdk.jfr.internal.PrivateAccess;
 
 public class FileSplit {
 	public static void splitFile(File f) throws IOException {
-		int partCounter = 1;
+		/*
+		@SuppressWarnings("resource")
+		Scanner in = new Scanner(System.in);
+		int n = in.nextInt();
+		if (n<=2) {System.out.print("Неверно введено число"); return;} */
+		int n = 4;
+		int partCounter = (int) Math.round(Math.log(n)/Math.log(2));
 		
 		int sizeOfFiles = 1024 * 1024;
 		byte[] buffer = new byte[sizeOfFiles];
@@ -29,4 +38,5 @@ public class FileSplit {
 			throw new IOException("Error with open file");
 		}
 	}
+	
 }

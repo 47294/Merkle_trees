@@ -1,4 +1,6 @@
 import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.Queue;
 
 
 public class Main_tree {
@@ -14,7 +16,7 @@ public class Main_tree {
 	
 	private static Node buildTree(ArrayList<Node> children) {
 		ArrayList<Node> parents = new ArrayList<>();
-		
+		// Переделать
 		while (children.size() != 1) {
 			int index = 0, lenght = children.size();
 			while (index < lenght) {
@@ -41,7 +43,31 @@ public class Main_tree {
 		if (root == null) {
 			return;
 		}
-		System.out.println("Final hash = " + root.getHash());
+		System.out.println("Public key = " + root.getHash());
+		System.out.print("Private key = ");
+		Queue<Node> queue = new LinkedList<Node>();
+		queue.add(root);
+		queue.add(null);
+		
+		while (!queue.isEmpty()) {
+			Node node = queue.poll();
+			if (node != null && node.getLeft() == null && node.getRight() == null) {
+				System.out.println(node.getHash());
+			}
+			else {
+				if (!queue.isEmpty()) {
+					queue.add(null);
+				}
+			}
+			
+			if (node != null && node.getLeft() != null) {
+				queue.add(node.getLeft());
+			}
+			
+			if (node != null && node.getRight() != null) {
+				queue.add(node.getRight());
+			}
+		}
 	}
 	
 }
