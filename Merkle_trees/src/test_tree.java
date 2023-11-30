@@ -1,3 +1,4 @@
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -10,10 +11,11 @@ public class test_tree {
 		dataBlockStrings.add("East");
 		dataBlockStrings.add("West");
 		dataBlockStrings.add("North");
-		Node root = Main_tree.generateTree(dataBlockStrings);
-		Main_tree.printfinalhash(root);
+		//Node root = Main_tree.generateTree(dataBlockStrings);
+		//Main_tree.printfinalhash(root);
 		
-		File_and_dir_handler.read_file("...\\Example");
+		final File folder = new File("C:\\Users\\Артем\\Documents\\GitHub\\Merkle_trees\\Merkle_trees\\src\\Example");
+		File_and_dir_handler.read_file(folder);
 	}
 
 }
