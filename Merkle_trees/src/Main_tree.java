@@ -55,7 +55,7 @@ public class Main_tree {
 				System.out.println(node.getHash());
 			}
 			else {
-				if (!queue.isEmpty()) {
+				if (queue.isEmpty()) {
 					queue.add(null);
 				}
 			}
